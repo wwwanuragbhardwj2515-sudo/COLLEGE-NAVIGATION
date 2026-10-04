@@ -3,9 +3,7 @@
 #include <limits.h>
 #include <stdlib.h>
 #include <ctype.h>
-
 #define V 8
-
 /* Location numbers */
 enum
 {
@@ -18,20 +16,16 @@ enum
     HOSTEL,
     AUDITORIUM
 };
-
 /* Graph */
 int graph[V][V] = {0};
-
 /* Parent array for shortest path */
 int parent[V];
-
 /* Add an undirected edge */
 void add_edge(int u, int v, int weight)
 {
     graph[u][v] = weight;
     graph[v][u] = weight;
 }
-
 /* Print location name */
 void print_location(int location)
 {
@@ -70,12 +64,9 @@ void print_location(int location)
         break;
     }
 }
-
-/* Generate Graphviz DOT file */
 void generate_graphviz(int source, int destination)
 {
     FILE *fp = fopen("campus.dot", "w");
-
     if (fp == NULL)
     {
         printf("\nERROR: campus.dot file create nahi ho payi!\n");
@@ -92,7 +83,6 @@ void generate_graphviz(int source, int destination)
     fprintf(fp,
             "    node [shape=box, style=\"rounded,filled\", "
             "fillcolor=\"lightgray\", fontname=\"Arial\"];\n\n");
-
     /* Print all edges */
     for (int i = 0; i < V; i++)
     {
@@ -101,14 +91,7 @@ void generate_graphviz(int source, int destination)
             if (graph[i][j] != 0)
             {
                 int highlight = 0;
-
-                /*
-                   Check whether this edge
-                   belongs to shortest path
-                */
-
                 int current = destination;
-
                 while (current != -1)
                 {
                     if (parent[current] == i && current == j)
@@ -116,13 +99,11 @@ void generate_graphviz(int source, int destination)
                         highlight = 1;
                         break;
                     }
-
                     if (parent[current] == j && current == i)
                     {
                         highlight = 1;
                         break;
                     }
-
                     current = parent[current];
                 }
 
@@ -272,11 +253,8 @@ void generate_graphviz(int source, int destination)
         fprintf(fp, "AUDITORIUM");
         break;
     }
-
     fprintf(fp, "\" [color=\"blue\", penwidth=4];\n");
-
     fprintf(fp, "}\n");
-
     fclose(fp);
 
     printf("\n========================================\n");
@@ -323,7 +301,6 @@ int minimum_distance(int dist[], int visited[])
 {
     int min = INT_MAX;
     int min_index = -1;
-
     for (int i = 0; i < V; i++)
     {
         if (visited[i] == 0 && dist[i] < min)
@@ -356,12 +333,9 @@ int dijkstra(int source, int destination)
     for (int i = 0; i < V; i++)
     {
         int u = minimum_distance(dist, visited);
-
         if (u == -1)
             break;
-
         visited[u] = 1;
-
         for (int v = 0; v < V; v++)
         {
             if (visited[v] == 0 &&
