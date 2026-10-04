@@ -1,0 +1,25 @@
+graph Campus {
+    layout=neato;
+    overlap=false;
+    splines=true;
+    bgcolor="white";
+
+    node [shape=box, style="rounded,filled", fillcolor="lightgray", fontname="Arial"];
+
+    "MAIN GATE" -- "ADMIN BLOCK" [label="100", color="black", penwidth=1.5];
+    "MAIN GATE" -- "LIBRARY" [label="180", color="black", penwidth=1.5];
+    "MAIN GATE" -- "AUDITORIUM" [label="300", color="red", penwidth=4];
+    "ADMIN BLOCK" -- "LIBRARY" [label="80", color="black", penwidth=1.5];
+    "ADMIN BLOCK" -- "ACADEMIC BLOCK" [label="120", color="black", penwidth=1.5];
+    "LIBRARY" -- "ACADEMIC BLOCK" [label="70", color="black", penwidth=1.5];
+    "LIBRARY" -- "CANTEEN" [label="90", color="black", penwidth=1.5];
+    "ACADEMIC BLOCK" -- "CANTEEN" [label="60", color="black", penwidth=1.5];
+    "ACADEMIC BLOCK" -- "COMPUTER LAB" [label="100", color="black", penwidth=1.5];
+    "CANTEEN" -- "COMPUTER LAB" [label="80", color="black", penwidth=1.5];
+    "CANTEEN" -- "HOSTEL" [label="150", color="black", penwidth=1.5];
+    "COMPUTER LAB" -- "HOSTEL" [label="120", color="black", penwidth=1.5];
+    "COMPUTER LAB" -- "AUDITORIUM" [label="140", color="black", penwidth=1.5];
+    "HOSTEL" -- "AUDITORIUM" [label="100", color="red", penwidth=4];
+    "MAIN GATE" [color="green", penwidth=4];
+    "HOSTEL" [color="blue", penwidth=4];
+}
